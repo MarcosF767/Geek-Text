@@ -36,9 +36,6 @@ public class DetailsSearchEndpoint {
     }
 
     class SortbyCopiesSold implements Comparator<Book> {
-        // Used for sorting in ascending order of
-        // roll number
-
         @Override
         public int compare(Book a, Book b) {
             return b.getCopiesSold() - a.getCopiesSold();
