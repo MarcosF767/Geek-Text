@@ -47,18 +47,20 @@ public class DetailsSearchEndpoint {
 
         int bookAmount = controller.getBookAmount();
 
-        List<Book> books = new ArrayList<>();
-        if (bookAmount <= 10){
-            for (int i = 1; i <= bookAmount; i++) 
-                books.add(controller.getBookById(i));
-        } else {
-            for (int i = 1; i <= 10; i++) 
-                books.add(controller.getBookById(i));
+        List<Book> tempBooks = new ArrayList<>();
+        for (int i = 1; i <= bookAmount; i++) 
+                tempBooks.add(controller.getBookById(i));
+        Collections.sort(tempBooks, new SortbyCopiesSold());
+        
+        
+        if (bookAmount > 10){
+            for (int i = bookAmount-1; i > 10; i--){
+                tempBooks.remove(i);
+            }
+            tempBooks.remove(10);
         }
         
-        
-        Collections.sort(books, new SortbyCopiesSold());
-        return books;
+        return tempBooks;
     }
 
     @GetMapping("/api/search/retrieve")
