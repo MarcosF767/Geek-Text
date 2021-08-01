@@ -1,8 +1,6 @@
 package com.library.geektext.search;
 
-import com.library.geektext.details.*;
 import java.util.List;
-import java.util.Optional;
 
 import com.library.geektext.Book;
 
